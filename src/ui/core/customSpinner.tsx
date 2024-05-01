@@ -1,13 +1,8 @@
-import { Box, Spinner, SpinnerProps } from "@chakra-ui/react";
-import { FC, ReactNode } from "react";
+import { CustomSpinT } from "@/types";
+import { Box, Spinner } from "@chakra-ui/react";
+import { FC } from "react";
 
-interface Props extends SpinnerProps {
-  children: ReactNode;
-  loading?: boolean;
-  connected?: boolean;
-}
-
-export const CustomSpinner: FC<Props> = ({
+export const CustomSpinner: FC<CustomSpinT> = ({
   children,
   loading,
   connected,

@@ -1,16 +1,30 @@
-import { useTokens } from "@/hooks/useTokens";
 import { fonts } from "@/theme/Fonts";
+import { Token } from "@/types";
 import { Avatar, Flex, HStack, Text, Tooltip } from "@chakra-ui/react";
-import { useState } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 
-export const TokenItems = () => {
-  const { tokeList } = useTokens();
-  const [selectedToken, setSelectedToken] = useState("");
+interface Props {
+  setActiveToken: Dispatch<SetStateAction<Token | undefined>>;
+  activeToken: Token | undefined;
+  otherToken: Token | undefined;
+  tokeList: Token[] | undefined;
+  onClose: () => void;
+}
 
-  console.log(selectedToken);
+export const TokenItems: FC<Props> = ({
+  setActiveToken,
+  activeToken,
+  otherToken,
+  tokeList,
+  onClose,
+}) => {
+  const handleClick = (token: Token) => {
+    setActiveToken(token);
+    onClose();
+  };
 
   return (
-    <Flex flexWrap="wrap"  width="20rem" gap={4}>
+    <>
       {tokeList &&
         tokeList.map((token) => {
           const { name, address, symbol } = token;
@@ -18,7 +32,8 @@ export const TokenItems = () => {
             <Flex
               borderRadius="18px"
               background={
-                selectedToken === address
+                activeToken?.address === address ||
+                otherToken?.address === address
                   ? "rgba(255, 255, 255, 0.07)"
                   : "transparent"
               }
@@ -26,8 +41,20 @@ export const TokenItems = () => {
               width="fit-content"
               padding="5px 12px 5px 6px"
               key={name}
-              onClick={() => setSelectedToken(address)}
-              cursor={selectedToken === address ? "not-allowed" : "pointer"}
+              onClick={() => {
+                if (
+                  otherToken?.address !== token.address &&
+                  activeToken?.address !== token.address
+                ) {
+                  handleClick(token);
+                }
+              }}
+              cursor={
+                activeToken?.address === address ||
+                otherToken?.address === address
+                  ? "not-allowed"
+                  : "pointer"
+              }
             >
               <HStack gap="10px">
                 <Tooltip
@@ -46,6 +73,6 @@ export const TokenItems = () => {
             </Flex>
           );
         })}
-    </Flex>
+    </>
   );
 };

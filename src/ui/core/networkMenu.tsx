@@ -1,10 +1,11 @@
 import {
   Button,
+  Circle,
   Flex,
-  FlexProps,
   HStack,
   Menu,
   MenuButton,
+  MenuButtonProps,
   MenuItem,
   MenuList,
   Text,
@@ -16,13 +17,13 @@ import { fonts } from "@/theme/Fonts";
 import { networkImage } from "@/util";
 import { FC } from "react";
 
-export const NetworkMenu: FC<FlexProps> = ({ ...rest }) => {
+export const NetworkMenu: FC<MenuButtonProps> = ({ ...rest }) => {
   const chains = useChains({ config: config });
   const { chain } = useAccount();
   const { switchChain } = useSwitchChain();
 
   return (
-    <Flex as="nav" alignItems="center" {...rest}>
+    <Flex as="nav" alignItems="center">
       <Menu placement="bottom-end" autoSelect={false}>
         {({ isOpen }) => (
           <>
@@ -40,8 +41,9 @@ export const NetworkMenu: FC<FlexProps> = ({ ...rest }) => {
               _hover={{ bg: "transparent" }}
               _active={{ bg: "none" }}
               _expanded={{ bg: "transparent" }}
+              {...rest}
             >
-              {chain && networkImage(chain.name)}
+              {chain ? networkImage(chain.name) : networkImage("Ethereum")}
             </MenuButton>
 
             <MenuList
@@ -65,11 +67,21 @@ export const NetworkMenu: FC<FlexProps> = ({ ...rest }) => {
                     _hover={{ bg: "surface.secondary" }}
                     onClick={() => switchChain({ chainId: network.id })}
                   >
-                    <HStack gap="10px">
-                      {networkImage(network.name)}
+                    <Flex
+                      justifyContent="space-between"
+                      alignItems="center"
+                      w="100%"
+                    >
+                      <HStack gap="10px">
+                        {networkImage(network.name)}
 
-                      <Text>{network.name}</Text>
-                    </HStack>
+                        <Text>{network.name}</Text>
+                      </HStack>
+
+                      {network === chain && (
+                        <Circle size="7px" bg="rgb(64, 182, 107)" />
+                      )}
+                    </Flex>
                   </MenuItem>
                 );
               })}

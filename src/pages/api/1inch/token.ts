@@ -11,6 +11,7 @@ export default async function handler(
     const response = await fetch(url, {
       headers: {
         Authorization: "Bearer zwNOkqKA9o2yEQWSXcPoWQjMHXdJgweL",
+        Accept: "application/json",
       },
     });
     const data = await response.json();

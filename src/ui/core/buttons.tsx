@@ -1,7 +1,16 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@chakra-ui/react";
-import { ConnectBtn, MyBtn, Selector } from "@/types";
+import {
+  Avatar,
+  Button,
+  ButtonProps,
+  HStack,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react";
+import { ConnectBtn, MyBtn, Selector, Token } from "@/types";
+import { ChevronUp } from "../components/icons/ChevronUp";
+import { fonts } from "@/theme/Fonts";
 
 export const CustomBtn: FC<MyBtn> = ({ children }) => {
   return (
@@ -49,6 +58,62 @@ export const SelectConnectorButton: FC<Selector> = ({
           {children}
         </Button>
       </CustomBtn>
+    </>
+  );
+};
+
+interface Props extends ButtonProps {
+  isOpen: boolean;
+  openModal: () => void;
+  activeToken?: Token | undefined;
+}
+
+export const SelectTokenButton: FC<Props> = ({
+  isOpen,
+  activeToken,
+  openModal,
+  ...rest
+}) => {
+  return (
+    <>
+      <Button
+        rightIcon={
+          <ChevronUp
+            transition="all 175ms ease"
+            transform={isOpen ? "" : "scaleY(-1)"}
+          />
+        }
+        width="fit-content"
+        borderRadius="18px"
+        backgroundColor="transparent"
+        border="1px solid rgba(255, 255, 255, 0.07)"
+        padding="5px 12px 5px 6px"
+        onClick={openModal}
+        {...rest}
+      >
+        {activeToken ? (
+          <HStack gap="10px">
+            <Tooltip
+              hasArrow
+              label={`${activeToken?.name} logo`}
+              bg="transparent"
+              color="#fff"
+              openDelay={1500}
+            >
+              <Avatar
+                size="xs"
+                name={activeToken?.name}
+                src={activeToken?.logoURI}
+              />
+            </Tooltip>
+            <Text fontFamily={fonts.body} fontWeight="600" fontSize="1rem">
+              {activeToken?.symbol}
+            </Text>
+          </HStack>
+        ) : (
+          "Select token"
+        )}
+      </Button>
     </>
   );
 };

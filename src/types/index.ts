@@ -3,3 +3,4 @@ export * from "./drawer";
 export * from "./modal";
 export * from "./block";
 export * from "./tokenInfo";
+export * from "./spinner";

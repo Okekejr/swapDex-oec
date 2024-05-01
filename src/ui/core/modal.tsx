@@ -1,4 +1,6 @@
 import {
+  Flex,
+  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -6,8 +8,13 @@ import {
   ModalHeader,
   ModalOverlay,
   ModalProps,
+  Text,
 } from "@chakra-ui/react";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
+import { NetworkMenu } from "./networkMenu";
+import { TokenItems } from "./tokenItems";
+import { fonts } from "@/theme/Fonts";
+import { Token } from "@/types";
 
 interface Props extends ModalProps {
   children: React.ReactNode;
@@ -19,9 +26,57 @@ export const ModalPopup: FC<Props> = ({ children, headerTitle, ...rest }) => {
     <Modal isCentered {...rest}>
       <ModalOverlay />
       <ModalContent color="#fff">
-        <ModalHeader>Select a token {headerTitle}</ModalHeader>
+        <ModalHeader>{headerTitle}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody textAlign="center">{children}</ModalBody>
+        <ModalBody>{children}</ModalBody>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+interface TokenProps {
+  activeToken: Token | undefined;
+  otherToken: Token | undefined;
+  setActiveToken: Dispatch<SetStateAction<Token | undefined>>;
+  onClose: () => void;
+  tokenList: Token[] | undefined;
+  isOpen: boolean;
+}
+
+export const TokenModal: FC<TokenProps> = ({
+  activeToken,
+  otherToken,
+  isOpen,
+  setActiveToken,
+  onClose,
+  tokenList,
+}) => {
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <ModalOverlay />
+      <ModalContent color="#fff">
+        <ModalHeader>Select a token</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Flex flexDirection="column" gap={8} py={4}>
+            <HStack justifyContent="space-between">
+              <Text fontFamily={fonts.body} fontWeight="600" fontSize="1rem">
+                Supported Tokens
+              </Text>
+              <NetworkMenu />
+            </HStack>
+
+            <Flex flexWrap="wrap" width="100%" gap={4}>
+              <TokenItems
+                activeToken={activeToken}
+                otherToken={otherToken}
+                setActiveToken={setActiveToken}
+                onClose={onClose}
+                tokeList={tokenList}
+              />
+            </Flex>
+          </Flex>
+        </ModalBody>
       </ModalContent>
     </Modal>
   );

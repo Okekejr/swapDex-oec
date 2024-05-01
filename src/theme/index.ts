@@ -5,6 +5,7 @@ import { fonts } from "./Fonts";
 import { fontSizes } from "./fontSizes";
 import { drawerTheme } from "./drawer";
 import { tooltipTheme } from "./tooltip";
+import { modalTheme } from "./modal";
 
 export const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -24,7 +25,7 @@ const theme = extendTheme({
   fonts,
   fontSizes,
   colors,
-  components: { Drawer: drawerTheme, Tooltip: tooltipTheme },
+  components: { Drawer: drawerTheme, Tooltip: tooltipTheme, Modal: modalTheme },
 });
 
 export default theme;

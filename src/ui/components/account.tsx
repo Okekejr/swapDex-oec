@@ -1,10 +1,25 @@
 import { Avatar, Box, Button, Text } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useAcctBalance } from "@/hooks/useAcc";
 import { TruncateAddress } from "@/util";
+import { AccountDrawer } from "../core/drawer";
+import { useWalletSelector } from "@/hooks/useSelector";
+import { DetailsOptions, SettingOptions } from "./drawerOptions";
+import { useAccount } from "wagmi";
+import { useFetchValue } from "@/hooks/useFetchValue";
 
 export const Account: FC = () => {
-  const { address } = useAcctBalance();
+  const { address, isConnected, balance } = useAcctBalance();
+  const { chain } = useAccount();
+  const { handleOpen, modal, handleClose } = useWalletSelector();
+  const [settings, setSettings] = useState(false);
+  const { value } = useFetchValue(chain);
+
+  useEffect(() => {
+    if (isConnected === true && modal === true) {
+      setSettings(false);
+    }
+  }, [isConnected, modal]);
 
   return (
     <>
@@ -22,6 +37,7 @@ export const Account: FC = () => {
         _hover={{
           backgroundColor: "rgba(78, 56, 156, 0.48)",
         }}
+        onClick={handleOpen}
       >
         <Box>
           <Avatar
@@ -36,6 +52,21 @@ export const Account: FC = () => {
           </Text>
         </Box>
       </Button>
+
+      {isConnected === true && !settings ? (
+        <AccountDrawer isOpen={modal} onClose={handleClose}>
+          <DetailsOptions
+            setSettings={setSettings}
+            addie={address && TruncateAddress(4, address)}
+            balance={balance.data}
+            value={value}
+          />
+        </AccountDrawer>
+      ) : (
+        <AccountDrawer isOpen={modal} onClose={handleClose}>
+          <SettingOptions setSettings={setSettings} />
+        </AccountDrawer>
+      )}
     </>
   );
 };
