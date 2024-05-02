@@ -63,7 +63,7 @@ export const WalletConatiner: FC<PropsStack> = ({ children }) => {
   );
 };
 
-export const WalletInput: FC<WalletProps> = ({ children }) => {
+export const WalletInputContainer: FC<WalletProps> = ({ children }) => {
   return (
     <Box
       borderRadius="10px"

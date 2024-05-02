@@ -13,3 +13,7 @@ export interface Token {
 export interface TokensResponse {
   tokens: Record<string, Token>;
 }
+
+export interface balances {
+  [address: string]: string;
+}

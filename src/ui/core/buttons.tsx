@@ -85,7 +85,7 @@ export const SelectTokenButton: FC<Props> = ({
         }
         width="fit-content"
         borderRadius="18px"
-        backgroundColor="transparent"
+        backgroundColor={activeToken ? "transparent" : "surface.quinary"}
         border="1px solid rgba(255, 255, 255, 0.07)"
         padding="5px 12px 5px 6px"
         onClick={openModal}

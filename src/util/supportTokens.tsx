@@ -1,6 +1,6 @@
 // symbols of tokens i want to support
 
-import { Token, TokensResponse } from "@/types";
+import { Token, TokensResponse, balances } from "@/types";
 
 export const supportTokens: string[] = [
   "ETH",
@@ -25,4 +25,19 @@ export const getSupportedTokens = (tokens: TokensResponse): Token[] => {
     });
 
   return supportedTokens;
+};
+
+export const getTokenBalance = (
+  addie: string | undefined,
+  balances: balances | undefined
+) => {
+  const tokenAddress = addie && addie;
+
+  console.log(addie, balances);
+
+  // if (tokenAddress && balances && balances.hasOwnProperty(tokenAddress)) {
+  //   return balances[tokenAddress];
+  // } else {
+  //   return undefined;
+  // }
 };
