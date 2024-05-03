@@ -100,10 +100,13 @@ export const DetailsOptions: FC<DetailsOpT> = ({
       </DrawerBody>
 
       <DrawerFooter>
-        <Text fontSize="14px">
-          By connecting a wallet, you agree to SwapDex{"'"}s{" "}
-          <span>Terms of Service</span> and consent to its{" "}
-          <span>Privacy Policy</span>.
+        <Text fontSize="14px" color="#C7C7C7">
+          Made with ♥️ by{" "}
+          <span style={{ fontWeight: "bold" }}>
+            <Link href="https://www.linkedin.com/in/emmanuel-okeke/" isExternal>
+              Okeke Chukwuebuka Emmanuel
+            </Link>
+          </span>
         </Text>
       </DrawerFooter>
     </>
@@ -142,7 +145,7 @@ export const SettingOptions: FC<SettingsOpt> = ({ setSettings }) => {
         <Text fontSize="14px" color="#C7C7C7">
           Made with ♥️ by{" "}
           <span style={{ fontWeight: "bold" }}>
-            <Link href="https://www.linkedin.com/in/emmanuel-okeke/" isExternal>
+            <Link href="https://okekeemmanuel.vercel.app/" isExternal>
               Okeke Chukwuebuka Emmanuel
             </Link>
           </span>

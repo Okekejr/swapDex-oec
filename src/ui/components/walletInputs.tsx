@@ -14,17 +14,29 @@ interface WalletInputT {
   otherToken: Token | undefined;
   tokeList: Token[] | undefined;
   max?: boolean;
+  result?: string | number | undefined;
+  data?: string | undefined;
+  handleOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  topInput?: number | undefined;
+  value?: number | null;
+  handleMaxBtn?: () => void;
 }
 
 export const WalletInput: FC<WalletInputT> = ({
   isOpen,
+  topInput,
+  handleOnChange,
   openModal,
   onClose,
   setActiveToken,
+  handleMaxBtn,
   activeToken,
   otherToken,
   tokeList,
   max,
+  result,
+  data,
+  value,
 }) => {
   return (
     <WalletInputContainer>
@@ -48,7 +60,9 @@ export const WalletInput: FC<WalletInputT> = ({
             fontSize={{ base: "1.7rem", md: "2rem" }}
             padding="0"
             _placeholder={{ color: "grey", fontWeight: "bold" }}
-            readOnly
+            value={topInput}
+            onChange={handleOnChange}
+            readOnly={!max}
           />
 
           <SelectTokenButton
@@ -67,25 +81,39 @@ export const WalletInput: FC<WalletInputT> = ({
           />
         </Flex>
         <Flex justifyContent="space-between">
-          <Text color="grey" fontSize="14px" w={{ base: "11rem", lg: "20rem" }}>
-            $
-          </Text>
-          <Flex alignItems="center" justifyContent="space-between" gap={4}>
-            <Text textAlign="end" fontSize="14px">
-              Balance:
+          {max && (
+            <Text
+              display={activeToken ? "block" : "none"}
+              color="grey"
+              fontSize="14px"
+              w={{ base: "11rem", lg: "20rem" }}
+            >
+              ${(topInput && value && (topInput * value).toFixed(2)) || 0}
             </Text>
-            {max && (
+          )}
+
+          {max && (
+            <Flex alignItems="center" justifyContent="space-between" gap={4}>
+              <Text width="fit-content" fontSize="12.5px">
+                Balance:{" "}
+                {activeToken?.address ===
+                "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+                  ? data
+                  : result}
+              </Text>
+
               <Text
-                as="button"
                 color="red.600"
                 fontSize="14px"
                 fontWeight="bold"
                 mt="0.9px"
+                onClick={handleMaxBtn}
               >
                 Max
               </Text>
-            )}
-          </Flex>
+            </Flex>
+          )}
+          <></>
         </Flex>
       </StackItemContainer>
     </WalletInputContainer>

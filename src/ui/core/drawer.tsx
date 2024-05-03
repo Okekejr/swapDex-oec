@@ -13,7 +13,7 @@ import { ModalSelect } from "@/types/drawer";
 export const SelectDrawer: FC<ModalSelect> = ({ children, ...rest }) => {
   return (
     <>
-      <Drawer placement="right" {...rest}>
+      <Drawer placement="right" size={{ base: "xs", md: "sm" }} {...rest}>
         <DrawerContent>
           <DrawerHeader>Connect a wallet</DrawerHeader>
 

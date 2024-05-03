@@ -56,7 +56,7 @@ export const WalletConatiner: FC<PropsStack> = ({ children }) => {
       max-width="480px"
       border="1px solid"
       borderRadius="24px"
-      w={{ md: "32rem" }}
+      w={{ base: "99vw", md: "32rem" }}
     >
       {children}
     </Box>
@@ -73,6 +73,7 @@ export const WalletInputContainer: FC<WalletProps> = ({ children }) => {
       flexDir="column"
       fontSize="1rem"
       opacity="0.8"
+      height="7.5rem"
       padding={4}
       _hover={{ opacity: "1" }}
     >
