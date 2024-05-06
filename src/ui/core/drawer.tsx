@@ -9,24 +9,23 @@ import {
 } from "@chakra-ui/react";
 import { FC } from "react";
 import { ModalSelect } from "@/types/drawer";
+import { useTranslation } from "react-i18next";
 
 export const SelectDrawer: FC<ModalSelect> = ({ children, ...rest }) => {
+  const { t } = useTranslation("global");
+
   return (
     <>
       <Drawer placement="right" size={{ base: "xs", md: "sm" }} {...rest}>
         <DrawerContent>
-          <DrawerHeader>Connect a wallet</DrawerHeader>
+          <DrawerHeader>{t("connect-wallet.heading")}</DrawerHeader>
 
           <DrawerBody>
             <Box>{children}</Box>
           </DrawerBody>
 
           <DrawerFooter>
-            <Text fontSize="14px">
-              By connecting a wallet, you agree to SwapDex{"'"}s{" "}
-              <span>Terms of Service</span> and consent to its{" "}
-              <span>Privacy Policy</span>.
-            </Text>
+            <Text fontSize="14px">{t("connect-wallet.privacy")}</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

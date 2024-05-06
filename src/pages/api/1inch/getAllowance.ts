@@ -4,17 +4,24 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { chainId } = req.body;
-  const url = `https://api.1inch.dev/swap/v6.0/${chainId}/tokens`;
-
   try {
-    const response = await fetch(url, {
+    const { chainId, src, from } = req.body;
+
+    const queryString = new URLSearchParams({
+      tokenAddress: src,
+      walletAddress: from,
+    }).toString();
+
+    const url = `https://api.1inch.dev/swap/v6.0/${chainId}/approve/allowance?${queryString}`;
+
+    // Fetch allowance
+    const allowanceResponse = await fetch(url, {
       headers: {
         Authorization: "Bearer zwNOkqKA9o2yEQWSXcPoWQjMHXdJgweL",
         Accept: "application/json",
       },
     });
-    const data = await response.json();
+    const data = await allowanceResponse.json();
     res.status(200).json(data);
   } catch (error) {
     console.error(error);

@@ -1,17 +1,9 @@
 import { fonts } from "@/theme/Fonts";
-import { Token } from "@/types";
+import { Token, TokenItemT } from "@/types";
 import { Avatar, Flex, HStack, Text, Tooltip } from "@chakra-ui/react";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 
-interface Props {
-  setActiveToken: Dispatch<SetStateAction<Token | undefined>>;
-  activeToken: Token | undefined;
-  otherToken: Token | undefined;
-  tokeList: Token[] | undefined;
-  onClose: () => void;
-}
-
-export const TokenItems: FC<Props> = ({
+export const TokenItems: FC<TokenItemT> = ({
   setActiveToken,
   activeToken,
   otherToken,

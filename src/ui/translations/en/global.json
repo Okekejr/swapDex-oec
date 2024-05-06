@@ -1,0 +1,25 @@
+{
+    "connect-wallet": {
+        "connect": "Connect",
+        "heading": "Connect a wallet",
+        "privacy": "By connecting a wallet, you agree to SwapDex's Terms of Service and consent to its Privacy Policy.",
+        "portfolio": "Portfolio",
+        "settings": "Settings",
+        "preferences": "Preferences",
+        "lang": "Language"
+    },
+    "tokens": {
+        "select": "Select a token",
+        "token": "Supported Tokens"
+    },
+    "wallet": {
+        "pay": "You Pay",
+        "recieve": "You Recieve"
+    },
+    "transaction": {
+        "confirm": "Confirmation Screen",
+        "hash": "Transaction Hash:",
+        "waiting": "Waiting for confirmation...",
+        "view": "Click to view on"
+    }
+}

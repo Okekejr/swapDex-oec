@@ -25,6 +25,8 @@ import { TruncateAddress, formatedBalance } from "@/util";
 import { useDisconnect } from "wagmi";
 import { DetailsOpT, SettingsOpt } from "@/types";
 import { FaArrowLeft } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
+import { TranslateSwitcher } from "./translateSwitcher";
 
 export const DetailsOptions: FC<DetailsOpT> = ({
   setSettings,
@@ -33,6 +35,7 @@ export const DetailsOptions: FC<DetailsOpT> = ({
   value,
 }) => {
   const { disconnect } = useDisconnect();
+  const { t } = useTranslation("global");
 
   return (
     <>
@@ -84,7 +87,7 @@ export const DetailsOptions: FC<DetailsOpT> = ({
       <DrawerBody>
         <Stack spacing={8} mt={8}>
           <HStack spacing={4}>
-            <Heading fontSize="23px">Portfolio</Heading>
+            <Heading fontSize="23px"> {t("connect-wallet.portfolio")}</Heading>
             <IoWalletOutline size="1.2rem" />
           </HStack>
 
@@ -114,6 +117,8 @@ export const DetailsOptions: FC<DetailsOpT> = ({
 };
 
 export const SettingOptions: FC<SettingsOpt> = ({ setSettings }) => {
+  const { t } = useTranslation("global");
+
   return (
     <>
       <DrawerHeader>
@@ -128,7 +133,7 @@ export const SettingOptions: FC<SettingsOpt> = ({ setSettings }) => {
             <FaArrowLeft size="1.3rem" />
           </Box>
           <Text mx="auto" fontWeight="600" textAlign="center">
-            Settings
+            {t("connect-wallet.settings")}
           </Text>
         </Flex>
       </DrawerHeader>
@@ -136,8 +141,12 @@ export const SettingOptions: FC<SettingsOpt> = ({ setSettings }) => {
       <DrawerBody>
         <Stack spacing={12}>
           <Text fontWeight="600" color="#C7C7C7" textAlign="left">
-            Preferences
+            {t("connect-wallet.preferences")}
           </Text>
+          <HStack width="100%" justifyContent="space-between">
+            <Text> {t("connect-wallet.lang")}</Text>
+            <TranslateSwitcher />
+          </HStack>
         </Stack>
       </DrawerBody>
 

@@ -1,0 +1,25 @@
+{
+    "connect-wallet": {
+        "connect": "Connecter",
+        "heading": "Connecter un portefeuille",
+        "privacy": "En connectant un portefeuille, vous acceptez les conditions d'utilisation de SwapDex et consentez à sa politique de confidentialité.",
+        "portfolio": "Portefeuille",
+        "settings": "Paramètres",
+        "preferences": "Préférences",
+        "lang": "Langue"
+    },
+    "tokens": {
+        "select": "Sélectionnez un jeton",
+        "token": "Jetons pris en charge"
+    },
+    "wallet": {
+        "pay": "Tu payes",
+        "recieve": "Vous recevez"
+    },
+    "transaction": {
+        "confirm": "Écran de confirmation",
+        "hash": "Hachage de transaction:",
+        "waiting": "En attente de confirmation...",
+        "view": "Cliquez pour voir sur"
+    }
+}

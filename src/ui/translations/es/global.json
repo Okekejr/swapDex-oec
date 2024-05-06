@@ -1,0 +1,25 @@
+{
+    "connect-wallet": {
+        "connect": "Conectar",
+        "heading": "Conectar una billetera",
+        "privacy": "Al conectar una billetera, acepta los Términos de servicio de SwapDex y acepta su Política de privacidad.",
+        "portfolio": "Portafolio",
+        "settings": "Ajustes",
+        "preferences": "Preferencias",
+        "lang": "Idioma"
+    },
+    "tokens": {
+        "select": "Seleccione una ficha",
+        "token": "Fichas Admitidas"
+    },
+    "wallet": {
+        "pay": "Tu pagas",
+        "recieve": "Recibes"
+    },
+    "transaction": {
+        "confirm": "Pantalla de confirmación",
+        "hash": "Hash de transacción:",
+        "waiting": "Esperando confirmación...",
+        "view": "Haga clic para ver en"
+    }
+}

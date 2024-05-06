@@ -8,9 +8,10 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { ConnectBtn, MyBtn, Selector, Token } from "@/types";
+import { MyBtn, SelectTokenBtn, Selector } from "@/types";
 import { ChevronUp } from "../components/icons/ChevronUp";
 import { fonts } from "@/theme/Fonts";
+import { useTranslation } from "react-i18next";
 
 export const CustomBtn: FC<MyBtn> = ({ children }) => {
   return (
@@ -20,7 +21,9 @@ export const CustomBtn: FC<MyBtn> = ({ children }) => {
   );
 };
 
-export const ConnectButton: FC<ConnectBtn> = ({ title, ...rest }) => {
+export const ConnectButton: FC<ButtonProps> = ({ ...rest }) => {
+  const { t } = useTranslation("global");
+
   return (
     <>
       <CustomBtn>
@@ -31,7 +34,7 @@ export const ConnectButton: FC<ConnectBtn> = ({ title, ...rest }) => {
           backgroundColor="rgba(78, 56, 156, 0.48)"
           {...rest}
         >
-          {title}
+          {t("connect-wallet.connect")}
         </Button>
       </CustomBtn>
     </>
@@ -62,13 +65,7 @@ export const SelectConnectorButton: FC<Selector> = ({
   );
 };
 
-interface Props extends ButtonProps {
-  isOpen: boolean;
-  openModal: () => void;
-  activeToken?: Token | undefined;
-}
-
-export const SelectTokenButton: FC<Props> = ({
+export const SelectTokenButton: FC<SelectTokenBtn> = ({
   isOpen,
   activeToken,
   openModal,

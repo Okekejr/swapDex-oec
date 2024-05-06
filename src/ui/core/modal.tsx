@@ -1,47 +1,90 @@
 import {
+  Box,
+  Button,
   Flex,
   HStack,
+  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  ModalProps,
+  Stack,
   Text,
 } from "@chakra-ui/react";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC, useEffect, useState } from "react";
 import { NetworkMenu } from "./networkMenu";
 import { TokenItems } from "./tokenItems";
 import { fonts } from "@/theme/Fonts";
-import { Token } from "@/types";
+import { ModalT, TokenProps } from "@/types";
+import { useTranslation } from "react-i18next";
 
-interface Props extends ModalProps {
-  children: React.ReactNode;
-  headerTitle: string;
-}
+export const ModalPopup: FC<ModalT> = ({
+  hash,
+  isConfirming,
+  isSuccess,
+  chain,
+  ...rest
+}) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useTranslation("global");
 
-export const ModalPopup: FC<Props> = ({ children, headerTitle, ...rest }) => {
+  useEffect(() => {
+    // Open the modal when isSuccess changes to true
+    if (isSuccess) {
+      setModalOpen(true);
+    }
+  }, [isSuccess]);
+
+  const closeModal = () => {
+    // Close the modal
+    setModalOpen(false);
+  };
+
   return (
-    <Modal isCentered {...rest}>
+    <Modal isOpen={modalOpen} onClose={closeModal} isCentered {...rest}>
       <ModalOverlay />
       <ModalContent color="#fff">
-        <ModalHeader>{headerTitle}</ModalHeader>
+        <ModalHeader>{t("transaction.confirm")}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>{children}</ModalBody>
+        <ModalBody textAlign="center">
+          <Stack spacing={8}>
+            {hash && (
+              <Text>
+                {t("transaction.hash")} {hash}{" "}
+              </Text>
+            )}
+            {isConfirming && <Text>{t("transaction.waiting")}</Text>}
+
+            <Box>
+              <Button
+                variant="solid"
+                borderRadius="full"
+                padding="5px 10px"
+                backgroundColor="rgba(78, 56, 156, 0.48)"
+                _hover={{
+                  bgColor: "rgba(31, 46, 100, 0.50)",
+                  textDecoration: "none",
+                }}
+                isExternal
+                as={Link}
+                href={
+                  hash &&
+                  chain &&
+                  `${chain.blockExplorers?.default.url}/tx/${hash}`
+                }
+              >
+                {t("transaction.view")}
+                {`${chain && chain.blockExplorers?.default.name}`}
+              </Button>
+            </Box>
+          </Stack>
+        </ModalBody>
       </ModalContent>
     </Modal>
   );
 };
-
-interface TokenProps {
-  activeToken: Token | undefined;
-  otherToken: Token | undefined;
-  setActiveToken: Dispatch<SetStateAction<Token | undefined>>;
-  onClose: () => void;
-  tokenList: Token[] | undefined;
-  isOpen: boolean;
-}
 
 export const TokenModal: FC<TokenProps> = ({
   activeToken,
@@ -51,17 +94,19 @@ export const TokenModal: FC<TokenProps> = ({
   onClose,
   tokenList,
 }) => {
+  const { t } = useTranslation("global");
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent color="#fff">
-        <ModalHeader>Select a token</ModalHeader>
+        <ModalHeader>{t("tokens.select")}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Flex flexDirection="column" gap={8} py={4}>
             <HStack justifyContent="space-between">
               <Text fontFamily={fonts.body} fontWeight="600" fontSize="1rem">
-                Supported Tokens
+                {t("tokens.token")}
               </Text>
               <NetworkMenu />
             </HStack>

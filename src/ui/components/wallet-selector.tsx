@@ -41,12 +41,7 @@ export const WalletSelector: FC<ButtonProps> = ({ ...rest }) => {
 
   return (
     <>
-      <ConnectButton
-        title="Connect"
-        width="fit-content"
-        onClick={handleOpen}
-        {...rest}
-      />
+      <ConnectButton width="fit-content" onClick={handleOpen} {...rest} />
 
       <SelectDrawer isOpen={modal} onClose={handleClose}>
         <Stack spacing={2}>

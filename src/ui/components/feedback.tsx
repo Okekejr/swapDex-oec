@@ -27,15 +27,15 @@ export const Feedback = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   getBlock();
+  useEffect(() => {
+    getBlock();
 
-  //   const intervalId = setInterval(() => {
-  //     getBlock();
-  //   }, 20 * 1000);
+    const intervalId = setInterval(() => {
+      getBlock();
+    }, 20 * 1000);
 
-  //   return () => clearInterval(intervalId);
-  // }, [getBlock]);
+    return () => clearInterval(intervalId);
+  }, [getBlock]);
 
   return hasMounted ? (
     <>

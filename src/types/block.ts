@@ -14,3 +14,12 @@ export interface ExplorT {
   chain: Chain;
   block: number;
 }
+
+export interface SwapRequest {
+  chainId: number | undefined;
+  src: string | undefined;
+  from: string | undefined;
+  dst: string | undefined;
+  amount: number | null;
+  srcDecimal: number | undefined;
+}
