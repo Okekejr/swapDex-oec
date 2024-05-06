@@ -17,7 +17,7 @@ export default async function handler(
     // Fetch allowance
     const allowanceResponse = await fetch(url, {
       headers: {
-        Authorization: "Bearer zwNOkqKA9o2yEQWSXcPoWQjMHXdJgweL",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_1INCH_API_KEY}`,
         Accept: "application/json",
       },
     });

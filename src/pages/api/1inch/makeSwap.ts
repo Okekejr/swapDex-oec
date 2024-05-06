@@ -23,7 +23,7 @@ export default async function handler(
     const makeSwap = await fetch(`${url}?${queryString}`, {
       method: "GET",
       headers: {
-        Authorization: "Bearer zwNOkqKA9o2yEQWSXcPoWQjMHXdJgweL",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_1INCH_API_KEY}`,
         Accept: "application/json",
       },
     });
