@@ -242,7 +242,6 @@ export const Wallet: FC = () => {
                 {hasMounted ? (
                   !isConnected ? (
                     <WalletSelector
-                      title="Connect Wallet"
                       backgroundColor="rgba(31, 46, 100, 0.50)"
                       border="1px solid #273977"
                       borderRadius="10px"

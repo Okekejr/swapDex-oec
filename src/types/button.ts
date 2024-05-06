@@ -11,6 +11,10 @@ export interface Selector extends ButtonProps {
   children: ReactNode;
 }
 
+export interface ConnectBtn extends ButtonProps {
+  title?: string;
+}
+
 export interface SelectTokenBtn extends ButtonProps {
   isOpen: boolean;
   openModal: () => void;
