@@ -1,10 +1,11 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+import { PageContainer } from "../pageContainer";
 
 const Pool = () => {
   return (
-    <HStack>
-      <Text>Pool</Text>
-    </HStack>
+    <PageContainer>
+      <Heading>Coming soon...</Heading>
+    </PageContainer>
   );
 };
 
