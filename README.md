@@ -34,6 +34,6 @@
 > - Portfolio:-
   <img width="464" alt="Screenshot 2024-05-05 at 6 05 43 PM" src="https://github.com/Okekejr/swapDex-oec/assets/85338878/9591524b-0358-4d16-bc03-e79d8484acad">
 
-## API LINK
+## LIVE LINK
 
 Live link [Click Me](https://swap-dex-oec.vercel.app/) hosted on Vercel.
