@@ -174,13 +174,13 @@ export const Wallet: FC = () => {
                           justify="flex-end"
                           gap={4}
                         >
-                          <Text width="fit-content" fontSize="12.5px">
+                          <Text width="fit-content" fontSize="10px">
                             Balance: <>{BalanceTop()}</>
                           </Text>
 
                           <Text
                             color="#FF0080"
-                            fontSize="14px"
+                            fontSize="11px"
                             fontWeight="bold"
                             mt="0.9px"
                             _hover={{ cursor: "pointer", opacity: 0.7 }}

@@ -1,50 +1,28 @@
-import { Global } from "@emotion/react"
+import { Global } from "@emotion/react";
 
 export const fonts = {
   heading:
-    "'Circular Std Bold', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
-  body: "'Circular Std Book', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
-  statusTags: "'Source Code Pro', 'monospace'",
-}
+    "'GT Flexa Mono Beta v5 Regular', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
+  body: " 'GT Flexa Mono Beta v5 Regular', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Roboto', 'sans-serif'",
+};
 
 export const FontFaces = () => (
   <Global
     styles={`
       @font-face {
-        font-family: 'Circular Std Book';
+        font-family: "GT Flexa Mono Beta v5 Regular";
+        src: url("https://db.onlinewebfonts.com/t/8dd8a40826ffb9145e5a6bf11c881466.woff2")format("woff2"),
+             url("https://db.onlinewebfonts.com/t/8dd8a40826ffb9145e5a6bf11c881466.woff")format("woff"),
+      }
+
+      @font-face {
+        font-family: 'Inter';
         font-style: normal;
         font-weight: normal;
         font-display: swap;
-        src: url(/assets/fonts/CircularStd-Book.woff) format('woff');
-             url(/assets/fonts/CircularStd-Book.woff2) format('woff2');
-      }
-
-      @font-face {
-        font-family: 'Circular Std Bold';
-        font-style: normal;
-        font-weight: normal;
-        font-display: swap;
-        src: url(/assets/fonts/CircularStd-Bold.woff) format('woff');
-             url(/assets/fonts/CircularStd-Bold.woff2) format('woff2');
-      }
-
-      @font-face {
-        font-family: 'HafferXH';
-        font-style: normal;
-        font-weight: 600;
-        font-display: swap;
-        src: url(/assets/fonts/HafferXH-SemiBold.woff) format('woff'),
-             url(/assets/fonts/HafferXH-SemiBold.woff2) format('woff2');
-      }
-
-      @font-face {
-        font-family: 'Source Code Pro';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url(/assets/fonts/SourceCodePro-Regular.woff) format('woff'),
-              url(/assets/fonts/SourceCodePro-Regular.woff2) format('woff2');
+        src: url("https://db.onlinewebfonts.com/t/1130e1ae4e4a76c7118c0b35c4b9d019.woff2")format("woff2"),
+             url("https://db.onlinewebfonts.com/t/1130e1ae4e4a76c7118c0b35c4b9d019.woff")format("woff"),
       }
     `}
   />
-)
+);

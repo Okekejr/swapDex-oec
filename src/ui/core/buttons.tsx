@@ -1,13 +1,6 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
-import {
-  Avatar,
-  Button,
-  ButtonProps,
-  HStack,
-  Text,
-  Tooltip,
-} from "@chakra-ui/react";
+import { Avatar, Button, HStack, Text, Tooltip } from "@chakra-ui/react";
 import { ConnectBtn, MyBtn, SelectTokenBtn, Selector } from "@/types";
 import { ChevronUp } from "../components/icons/ChevronUp";
 import { fonts } from "@/theme/Fonts";
@@ -30,7 +23,10 @@ export const ConnectButton: FC<ConnectBtn> = ({ title, ...rest }) => {
         <Button
           variant="solid"
           borderRadius="full"
+          color="neutral.100"
           padding="5px 10px"
+          _hover={{ bgColor: "" }}
+          _active={{ bgColor: "" }}
           backgroundColor="rgba(78, 56, 156, 0.48)"
           {...rest}
         >
@@ -53,6 +49,9 @@ export const SelectConnectorButton: FC<Selector> = ({
           variant="solid"
           width="100%"
           height="4rem"
+          _hover={{ bgColor: "" }}
+          _active={{ bgColor: "" }}
+          fontSize="0.8rem"
           borderRadius="none"
           color="neutral.100"
           bgGradient={bgGradient}
@@ -81,7 +80,11 @@ export const SelectTokenButton: FC<SelectTokenBtn> = ({
           />
         }
         width="fit-content"
+        fontSize="0.8rem"
         borderRadius="18px"
+        color="neutral.100"
+        _hover={{ bgColor: "" }}
+        _active={{ bgColor: "" }}
         backgroundColor={activeToken ? "transparent" : "surface.quinary"}
         border="1px solid rgba(255, 255, 255, 0.07)"
         padding="5px 12px 5px 6px"
