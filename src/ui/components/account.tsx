@@ -47,7 +47,7 @@ export const Account: FC = () => {
           />
         </Box>
         <Box w="fit-content" display={{ base: "none", md: "block" }}>
-          <Text fontWeight="thin">
+          <Text fontWeight="thin" color="neutral.100">
             {address && TruncateAddress(4, address)}
           </Text>
         </Box>

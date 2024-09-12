@@ -60,7 +60,10 @@ export const DetailsOptions: FC<DetailsOpT> = ({
               onClick={() => setSettings(true)}
               variant="ghost"
               w="fit-content"
+              color="neutral.100"
               position="relative"
+              _hover={{ bgColor: "surface.tertiary" }}
+              _active={{ bgColor: "" }}
               padding="3px 7px"
             >
               <IoMdSettings size="1.3rem" />
@@ -71,6 +74,9 @@ export const DetailsOptions: FC<DetailsOpT> = ({
               variant="ghost"
               w="fit-content"
               position="relative"
+              color="neutral.100"
+              _hover={{ bgColor: "surface.tertiary" }}
+              _active={{ bgColor: "" }}
               padding="3px 7px"
             >
               <GiPowerButton size="1.2rem" />
@@ -144,7 +150,7 @@ export const SettingOptions: FC<SettingsOpt> = ({ setSettings }) => {
             {t("connect-wallet.preferences")}
           </Text>
           <HStack width="100%" justifyContent="space-between">
-            <Text> {t("connect-wallet.lang")}</Text>
+            <Text color="neutral.100"> {t("connect-wallet.lang")}</Text>
             <TranslateSwitcher />
           </HStack>
         </Stack>

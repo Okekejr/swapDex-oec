@@ -34,6 +34,7 @@ export const TranslateSwitcher: FC<FlexProps> = ({ ...rest }) => {
               <MenuButton
                 as={Button}
                 background="transparent"
+                color="neutral.100"
                 padding={0}
                 height="1.7rem"
                 rightIcon={
